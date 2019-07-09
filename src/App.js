@@ -17,12 +17,29 @@ function Tasks() {
 
 
     fetch( API, {
-      mode: 'cors',
+      mode: 'cors'
     })
     .then(data => data.json())
     .then(tasks => setTasks(tasks))
     .catch(console.error);
 
+  }
+
+  const _advanceStatus = (e) => {
+    e.preventDefault();
+    let id = e.target.id;
+
+    fetch( `${API}/${id}/state`, {
+      mode: 'cors',
+      method: 'PUT'
+    })
+    .then(data => data.json())
+    .then(task => {
+        setTasks( tasks.map(entry => {
+          return entry.id === id ? task : entry;
+        }))
+      })
+    .catch(console.error);
   }
 
   useEffect(_getTasks, []);
@@ -35,7 +52,9 @@ function Tasks() {
             <div>Assigned to: {task.assignee}</div>
             <div>Title: {task.title}</div>
             <div>Description: {task.description}</div>
-            <div>Status: {task.status}</div>
+            <div>
+              Status: {task.status} <button id={task.id} onClick={_advanceStatus}>Advance Task</button>
+            </div>
           </summary>
         </li>
         )}

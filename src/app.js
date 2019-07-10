@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import logo from './logo.svg';
 import './app.scss';
 
-import mockData from './mock.json';
-
-const API = 'http://taskmaster-env.f3vxumqd2q.us-west-2.elasticbeanstalk.com';
+const API = 'http://taskmasterbackend-env.f5c2b95jsn.us-west-2.elasticbeanstalk.com/tasks';
+// const API = 'http://localhost:5000/tasks'
+const s3Endpoint = 'https://s3.us-west-2.amazonaws.com/';
+const imageBucket = 'pettynan-taskmaster-images';
 
 
 function Tasks() {
@@ -55,6 +55,14 @@ function Tasks() {
             <div>
               Status: {task.status} <button id={task.id} onClick={_advanceStatus}>Advance Task</button>
             </div>
+            <form action={API + '/' + task.id + '/images'} method="POST" encType="multipart/form-data">
+              <label>
+                <span>Upload Image: </span>
+                <input name="file" type="file" />
+              </label>
+              <button>+</button>
+            </form>
+            <img src={s3Endpoint + imageBucket + task.image} height="200px"></img>
           </summary>
         </li>
         )}

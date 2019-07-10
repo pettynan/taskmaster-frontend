@@ -13,8 +13,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && aws s3 sync ./build s3://petty-taskmaster-frontend --acl public-read",
-    "deployx": "npm run build && aws s3 sync ./build s3://petty-taskmaster-frontend"
+    "deploy": "npm run build && aws s3 sync ./build s3://pettynan-taskmaster-frontend --acl public-read",
+    "deployx": "npm run build && aws s3 sync ./build s3://pettynan-taskmaster-frontend"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -4,7 +4,7 @@ import './app.scss';
 
 import mockData from './mock.json';
 
-const API = 'http://localhost:5000/tasks';
+const API = 'http://taskmaster-env.f3vxumqd2q.us-west-2.elasticbeanstalk.com';
 
 
 function Tasks() {

@@ -28,6 +28,11 @@ main {
                 display:flex;
                   flex-direction:row;
                   justify-content: space-between;
+                  img {
+                    float: right;
+                    margin: 5px;
+                  }
+
               }
               section {
                   background: #ccc;
@@ -52,3 +57,4 @@ footer {
   background: #ccc;
   line-height: 5em;
 }
+
